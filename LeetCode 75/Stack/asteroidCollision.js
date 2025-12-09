@@ -14,7 +14,7 @@ const asteroidCollision = (asteroids) => {
                 if (survivors.at(-1) < 0) {
                     survivors.push(num)
                     break
-                }
+                }d
                 if (survivors.length === 0) {
                     survivors.push(num)
                     break
