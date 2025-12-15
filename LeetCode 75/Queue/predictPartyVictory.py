@@ -1,19 +1,28 @@
+from collections import deque
+
 def predictPartyVictory(senate):
-    senate = list(senate)
+    r = deque()
+    d = deque()
 
-    while len(senate) > 1:
-        if not senate[1] == senate[0]:
-            senate.pop(1)
-            senate.append(senate[0])
-            senate.pop(0)
+    for i in range(len(senate)):
+        el = senate[i]
+        if el == "R":
+            r.append(i)
         else:
-            senate.append(senate[0])
-            senate.pop(0)
+            d.append(i)
+    
+    while len(r) > 0 and len(d) > 0:
+        rCur = r.popleft()
+        dCur = d.popleft()
 
-        votes = "".join(senate)
-        if votes.count("D") == len(senate) or votes.count("R") == len(senate):
-            break
+        if rCur < dCur:
+            r.append(rCur + len(senate))
+        else:
+            d.append(dCur + len(senate))
 
-    return "Radiant" if senate[0] == "R" else "Dire"
+    return "Radiant" if r else "Dire"
 
-print(predictPartyVictory("D"))
+print(predictPartyVictory("DDRRR"))
+
+# DDRRR
+# DRR
