@@ -33,7 +33,6 @@ def deleteMiddleNode(head):
         n += 1
         current = current.next
 
-    g
     mid = math.floor(n/2)
     count = 0
     current = head
