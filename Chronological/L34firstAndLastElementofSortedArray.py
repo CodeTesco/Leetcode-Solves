@@ -13,7 +13,6 @@ def searchRange(nums, target):
         if nums[mid] == target:
             midInd = mid
             pos[0] = mid
-            l = 0
             r = mid - 1
         elif nums[mid] > target:
             r = mid - 1
@@ -22,13 +21,15 @@ def searchRange(nums, target):
 
     l = midInd
     r = n - 1
+
+    if pos[0] == -1:
+        return pos
     
     while l <= r:
         mid = l + math.floor((r-l)/2)
         if nums[mid] == target:
             pos[1] = mid
             l = mid + 1
-            r = n - 1
         elif nums[mid] > target:
             r = mid - 1
         elif nums[mid] < target:
