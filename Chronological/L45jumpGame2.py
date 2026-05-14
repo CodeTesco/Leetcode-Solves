@@ -2,7 +2,7 @@ def jump(nums):
     n = len(nums)
     if n <= 1:
         return 0
-        gi
+
     i = 0
     jumps = 0
     max_jump = 0 
